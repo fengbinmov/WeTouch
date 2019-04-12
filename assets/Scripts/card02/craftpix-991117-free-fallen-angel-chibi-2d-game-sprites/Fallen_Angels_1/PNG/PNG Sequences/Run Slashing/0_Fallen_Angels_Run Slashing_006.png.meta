@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "25ac4409-076a-430a-b150-39a25e79d287",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Run Slashing_006": {
+      "ver": "1.0.3",
+      "uuid": "d2f8ad90-170f-4f86-a68c-92be570f92ce",
+      "rawTextureUuid": "25ac4409-076a-430a-b150-39a25e79d287",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 92.5,
+      "offsetY": -20.5,
+      "trimX": 242,
+      "trimY": 190,
+      "width": 601,
+      "height": 561,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

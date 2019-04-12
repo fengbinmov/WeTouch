@@ -28,7 +28,7 @@
     "orientation": "portrait",
     "zip": false
   },
-  "startScene": "2e964298-8ecf-49c5-b697-13c609f9187f",
+  "startScene": "5f15e482-7361-493e-84ab-97050ab40931",
   "title": "SpacePlane",
   "webOrientation": "auto",
   "wechatgame": {
@@ -38,11 +38,5 @@
     "subContext": ""
   },
   "xxteaKey": "763231ff-524b-4d",
-  "zipCompressJs": true,
-  "includeAnySDK": false,
-  "oauthLoginServer": "",
-  "appKey": "",
-  "appSecret": "",
-  "privateKey": "",
-  "jailbreakPlatform": false
+  "zipCompressJs": true
 }

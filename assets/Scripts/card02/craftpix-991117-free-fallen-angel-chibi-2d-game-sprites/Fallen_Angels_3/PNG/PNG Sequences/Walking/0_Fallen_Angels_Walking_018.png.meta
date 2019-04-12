@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "6b4f4e71-4930-44b6-b1b0-0c2f72964aee",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Walking_018": {
+      "ver": "1.0.3",
+      "uuid": "36c79d71-4071-4fd5-9963-8f290f8d9c96",
+      "rawTextureUuid": "6b4f4e71-4930-44b6-b1b0-0c2f72964aee",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -16,
+      "offsetY": -1.5,
+      "trimX": 233,
+      "trimY": 151,
+      "width": 402,
+      "height": 601,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "09bf09eb-6554-4bf7-a3ce-34019e21b150",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Falling Down_003": {
+      "ver": "1.0.3",
+      "uuid": "ce4eee6a-8620-4ff0-9f4a-54507b12a042",
+      "rawTextureUuid": "09bf09eb-6554-4bf7-a3ce-34019e21b150",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 42,
+      "offsetY": 35.5,
+      "trimX": 256,
+      "trimY": 114,
+      "width": 472,
+      "height": 601,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "e666c57f-7049-4139-8087-22b769816cce",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Throwing_006": {
+      "ver": "1.0.3",
+      "uuid": "39580abd-823b-4d88-9343-1914795ab40b",
+      "rawTextureUuid": "e666c57f-7049-4139-8087-22b769816cce",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 74,
+      "offsetY": -20.5,
+      "trimX": 284,
+      "trimY": 190,
+      "width": 480,
+      "height": 561,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

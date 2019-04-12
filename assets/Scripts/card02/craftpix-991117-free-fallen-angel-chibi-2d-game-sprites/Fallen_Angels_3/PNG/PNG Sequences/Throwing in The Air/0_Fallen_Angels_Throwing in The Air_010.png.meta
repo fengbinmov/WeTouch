@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "d8efa801-c8e6-4491-9f3f-479a0af577d1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Throwing in The Air_010": {
+      "ver": "1.0.3",
+      "uuid": "5c208a34-25bb-49af-b563-82830c8f88a1",
+      "rawTextureUuid": "d8efa801-c8e6-4491-9f3f-479a0af577d1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -56,
+      "offsetY": 41,
+      "trimX": 194,
+      "trimY": 105,
+      "width": 400,
+      "height": 608,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

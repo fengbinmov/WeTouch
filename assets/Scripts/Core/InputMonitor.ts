@@ -1,3 +1,5 @@
+import { Dictionary } from "./General";
+
 // Learn TypeScript:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/typescript.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
@@ -47,6 +49,7 @@ export default class InputMonitor extends cc.Component {
     private touchs : cc.Touch[];
     private touchStatu : ButtonStatu[];
 
+    private keyBoards : Dictionary<cc.macro.KEY,ButtonStatu>;
 
     public MouseBtnLeft() { return this.mouseLeft; }
     public MouseBtnRight() { return this.mouseRight; }
@@ -71,6 +74,46 @@ export default class InputMonitor extends cc.Component {
             }
         }
         return hav;
+    }
+
+    
+    public GetKeyBeginDown(key :cc.macro.KEY){
+
+        if(this.keyBoards.ContainKey(key) && this.keyBoards.Item(key) == ButtonStatu.BeginDown){
+            
+            this.keyBoards.SetItem(key,ButtonStatu.Down);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public GetKeyDown(key :cc.macro.KEY){
+
+        if(this.keyBoards.ContainKey(key) && this.keyBoards.Item(key) == ButtonStatu.Down){
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public GetKeyUp(key :cc.macro.KEY){
+
+        if(this.keyBoards.ContainKey(key)){
+
+            return this.keyBoards.Item(key) == ButtonStatu.Up;
+        }
+        else{
+            return true;
+        }
+    }
+
+    //仅限于键盘
+    public GetAnyKeyDown():boolean{
+        
+        return this.keyBoards.ContainValue(ButtonStatu.Down);
     }
 
     //计算每帧的时间间隔
@@ -105,6 +148,7 @@ export default class InputMonitor extends cc.Component {
         this.initScreenInfo();
 
         this.touchStatu = [0,0,0,0,0,0,0,0,0,0];
+        this.keyBoards = new Dictionary<cc.macro.KEY,ButtonStatu>();
 
         this.node.on(cc.Node.EventType.MOUSE_DOWN, this.mouseBtnDownMonitor,this);
         this.node.on(cc.Node.EventType.MOUSE_UP, this.mouseBtnUpMonitor,this);
@@ -121,6 +165,9 @@ export default class InputMonitor extends cc.Component {
         cc.director.on(cc.Director.EVENT_BEFORE_UPDATE,this.makeDeltaStart,this);
 
         cc.view.setResizeCallback(this.initScreenInfo);
+
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN,this.keyBroadDown,this);
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP,this.keyBroadUp,this);
     }
 
 
@@ -316,12 +363,47 @@ export default class InputMonitor extends cc.Component {
         this.mouseMiddleNum = event.getScrollY();
         this.mouseDelta = cc.Vec2.ZERO;
     }
+
+    //键盘响应
+    private keyBroadDown(event :cc.Event.EventKeyboard){
+        
+        if(this.keyBoards.ContainKey(event.keyCode)){
+
+            if(this.keyBoards.Item(event.keyCode) == ButtonStatu.Up || this.keyBoards.Item(event.keyCode) == ButtonStatu.Dis){
+                
+                this.keyBoards.SetItem(event.keyCode,ButtonStatu.BeginDown);
+                this.node.runAction(
+                    cc.sequence(
+                        cc.delayTime(0.1),
+                        cc.callFunc(()=>{
+                            if(InputMonitor.Instance().keyBoards.Item(event.keyCode) == ButtonStatu.BeginDown)
+                                InputMonitor.Instance().keyBoards.SetItem(event.keyCode,ButtonStatu.Down);
+                        })
+                    )
+                );
+            }
+        }
+        else{
+            this.keyBoards.Add(event.keyCode,ButtonStatu.BeginDown);
+        }
+    }
+
+    private keyBroadUp(event :cc.Event.EventKeyboard){
+
+        if(this.keyBoards.ContainKey(event.keyCode)){
+            this.keyBoards.SetItem(event.keyCode,ButtonStatu.Up);
+        }
+        else{
+            this.keyBoards.Add(event.keyCode,ButtonStatu.Up);
+        }
+    }
 }
 export class ButtonStatu {
     static Up: number = 0;
     static Down: number = 1;
     static Dis: number = 2;
     static Move: number = 3;
+    static BeginDown : number =4;
 
     constructor(){}
 } 

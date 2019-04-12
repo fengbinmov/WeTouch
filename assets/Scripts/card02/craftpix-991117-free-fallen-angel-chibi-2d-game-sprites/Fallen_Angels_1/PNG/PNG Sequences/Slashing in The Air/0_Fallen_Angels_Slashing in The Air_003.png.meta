@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "a5436f9d-ee1f-4472-b26a-d1926c287111",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Slashing in The Air_003": {
+      "ver": "1.0.3",
+      "uuid": "0c2ac7b4-8d5a-4d0e-9f52-0527273bb779",
+      "rawTextureUuid": "a5436f9d-ee1f-4472-b26a-d1926c287111",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 83.5,
+      "offsetY": 25,
+      "trimX": 234,
+      "trimY": 140,
+      "width": 599,
+      "height": 570,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

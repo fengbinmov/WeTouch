@@ -48,7 +48,7 @@ export default class PlayerController extends cc.Component {
                 if (target.x < this.node.position.x) {
                     ang = (180 - ang) + 180;
                 }
-                this.node.angle = -ang;
+                this.node.rotation = ang;
             }
         }
         if(InputMonitor.Instance().MouseBtnLeft() == ButtonStatu.Up){

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "7bd953ae-2e20-407a-a960-433e92d4382c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Dying_008": {
+      "ver": "1.0.3",
+      "uuid": "142f2752-d1f4-4ef9-9f99-9a1e3d8c3189",
+      "rawTextureUuid": "7bd953ae-2e20-407a-a960-433e92d4382c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -110,
+      "offsetY": -72.5,
+      "trimX": 66,
+      "trimY": 292,
+      "width": 548,
+      "height": 461,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

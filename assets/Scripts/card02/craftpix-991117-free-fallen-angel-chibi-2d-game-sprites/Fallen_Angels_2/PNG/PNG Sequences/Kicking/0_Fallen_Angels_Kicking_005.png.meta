@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "783a6df6-a9a3-4c70-89be-08c270a01f38",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Kicking_005": {
+      "ver": "1.0.3",
+      "uuid": "c0fa414d-2b49-4b84-a376-ff7a27d2f1b9",
+      "rawTextureUuid": "783a6df6-a9a3-4c70-89be-08c270a01f38",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -38.5,
+      "offsetY": -2,
+      "trimX": 194,
+      "trimY": 153,
+      "width": 435,
+      "height": 598,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

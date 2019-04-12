@@ -46,8 +46,8 @@ export default class WeaponSystem extends cc.Component {
             let temp :cc.Node = cc.instantiate(this.bullet);
             temp.parent = LayerManager.Instance().layer01;
             temp.position  = this.node.parent.position;
-            temp.angle = this.node.parent.angle;
-            let angR = (this.node.parent.angle/90) * 1.57;
+            temp.rotation = this.node.parent.rotation;
+            let angR = -(this.node.parent.rotation/90) * 1.57;
             let x,y;
             let dir :cc.Vec2 = cc.Vec2.UP 
             x = dir.x * Math.cos(angR) - dir.y * Math.sin(angR);

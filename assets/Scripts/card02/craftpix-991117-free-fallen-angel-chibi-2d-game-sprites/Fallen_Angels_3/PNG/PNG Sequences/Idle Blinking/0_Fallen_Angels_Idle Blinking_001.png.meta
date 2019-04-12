@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "7b51f99d-2484-4a21-b6ad-6d60342029c0",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Idle Blinking_001": {
+      "ver": "1.0.3",
+      "uuid": "2cd72c7b-b59b-423f-866e-f5bf31b401f1",
+      "rawTextureUuid": "7b51f99d-2484-4a21-b6ad-6d60342029c0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -14.5,
+      "offsetY": -5,
+      "trimX": 234,
+      "trimY": 159,
+      "width": 403,
+      "height": 592,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

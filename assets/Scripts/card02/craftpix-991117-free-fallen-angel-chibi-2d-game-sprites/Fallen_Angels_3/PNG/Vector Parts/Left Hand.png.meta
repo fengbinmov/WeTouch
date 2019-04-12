@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "8bf12759-1a85-472c-90b7-31d64330bc42",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "Left Hand": {
+      "ver": "1.0.3",
+      "uuid": "4ef2e15c-59e3-4b7a-9c24-45f9060d9543",
+      "rawTextureUuid": "8bf12759-1a85-472c-90b7-31d64330bc42",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": -0.5,
+      "trimX": 28,
+      "trimY": 30,
+      "width": 73,
+      "height": 69,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

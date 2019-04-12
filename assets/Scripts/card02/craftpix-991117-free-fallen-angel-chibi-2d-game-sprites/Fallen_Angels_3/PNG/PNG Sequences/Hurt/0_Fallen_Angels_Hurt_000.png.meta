@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "8247b817-9b8b-47c2-9a08-d945f0ad69ec",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "0_Fallen_Angels_Hurt_000": {
+      "ver": "1.0.3",
+      "uuid": "4c82acf5-cfe9-48b4-9d5b-aaf68d3acc46",
+      "rawTextureUuid": "8247b817-9b8b-47c2-9a08-d945f0ad69ec",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -16,
+      "offsetY": -5.5,
+      "trimX": 233,
+      "trimY": 160,
+      "width": 402,
+      "height": 591,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
