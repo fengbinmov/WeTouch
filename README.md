@@ -5,16 +5,29 @@ CocosCreate 触控辅助插件
 
 ![ScreenShot](https://img-blog.csdnimg.cn/2019040419313889.gif)
 ![ScreenShot](https://img-blog.csdnimg.cn/20190411165524134.GIF)
+![ScreenShot](https://img-blog.csdnimg.cn/20190412161110430.gif)
 
 **使用方法**
 
   只需要将Core文件拖入你的项目，并把InputMoniter挂在到你的主Canvas即可
+  
+**功能简介**
+
+1.实时访问每个触摸手指的状态（手指顺序，touch位置，按钮状态，Touch类）
+
+2.使鼠标与触摸的API兼容访问
+
+3.实时访问键盘按钮状态
+
+4.增加基础数据结构 List Dictionary Statck Queue
 
 **范例展示**
 
-  card : 展示了多点触控的使用
+  card : 展示了实时访问多点触控的使用
   
-  card01 :展示了鼠标位置与世界的转换
+  card01 :展示了鼠标位置与世界的转换  
+  
+  card02 :展示了实时访问键盘按钮状态
   
 **API**
   
