@@ -58,9 +58,10 @@ export default class PlayerController extends cc.Component {
         
         
         InputMonitor.Instance().lable.string = 
-        "target: "+target +"\n"+
-        "position: "+this.node.position+"\n"+
-        "camera: "+this.camera.position+"\n"+
+        "ScreenPosition: "+InputMonitor.Instance().MousePosition() +"\n"+
+        "worldPosition: "+target +"\n"+
+        "selfPosition: "+this.node.position+"\n"+
+        "worldCamera: "+this.camera.position+"\n"+
         "dis: "+this.dis(target,this.node.position)+"\n"+
         "dir: "+this.nowDir+"\n"+
         "MouseBtnLeft: "+InputMonitor.Instance().MouseBtnLeft()+"\n"+

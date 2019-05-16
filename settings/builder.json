@@ -1,6 +1,6 @@
 {
   "android-instant": {
-    "REMOTE_SERVER_ROOT": "",
+    "REMOTE_SERVER_ROOT": "http://127.0.0.1:7456/preview-android-instant/",
     "host": "",
     "pathPattern": "",
     "recordPath": "",
@@ -10,6 +10,7 @@
   "encryptJs": true,
   "excludeScenes": [],
   "fb-instant-games": {},
+  "includeAnySDK": false,
   "includeSDKBox": false,
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
@@ -17,10 +18,10 @@
   "mergeStartScene": false,
   "optimizeHotUpdate": false,
   "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
+    "landscapeLeft": false,
+    "landscapeRight": false,
     "portrait": false,
-    "upsideDown": false
+    "upsideDown": true
   },
   "packageName": "org.cocos2d.SpacePlane",
   "qqplay": {
@@ -28,7 +29,7 @@
     "orientation": "portrait",
     "zip": false
   },
-  "startScene": "5f15e482-7361-493e-84ab-97050ab40931",
+  "startScene": "2e964298-8ecf-49c5-b697-13c609f9187f",
   "title": "SpacePlane",
   "webOrientation": "auto",
   "wechatgame": {

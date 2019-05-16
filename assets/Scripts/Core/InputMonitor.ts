@@ -50,13 +50,15 @@ export default class InputMonitor extends cc.Component {
     private touchStatu : ButtonStatu[];
 
     private keyBoards : Dictionary<cc.macro.KEY,ButtonStatu>;
+    private isInputOverObjectOnCanvas: boolean = true;
 
     public MouseBtnLeft() { return this.mouseLeft; }
     public MouseBtnRight() { return this.mouseRight; }
     public MouseBtnMiddle() { return this.mouseMiddle; }
     public MousePosition() :cc.Vec2{ 
         return this.mousePosition;
-    }public MouseToWorldPosition() :cc.Vec2{ 
+    }
+    public MouseToWorldPosition() :cc.Vec2{ 
         return this.GetMouseWorldPosition(); 
     }
     public MouseMiddleNum() { return this.mouseMiddleNum; }
@@ -90,11 +92,12 @@ export default class InputMonitor extends cc.Component {
     }
     public GetKeyDown(key :cc.macro.KEY){
 
-        if(this.keyBoards.ContainKey(key) && this.keyBoards.Item(key) == ButtonStatu.Down){
-            
-            return true;
+        if(this.keyBoards.ContainKey(key)){
+            return this.keyBoards.Item(key) == ButtonStatu.Down;
         }
         else{
+
+            this.keyBoards.Add(key,ButtonStatu.Up);
             return false;
         }
     }
@@ -110,10 +113,9 @@ export default class InputMonitor extends cc.Component {
         }
     }
 
-    //仅限于键盘
     public GetAnyKeyDown():boolean{
         
-        return this.keyBoards.ContainValue(ButtonStatu.Down);
+        return this.keyBoards.ContainValue(ButtonStatu.Down) || this.mouseLeft == ButtonStatu.Down|| this.mouseRight == ButtonStatu.Down|| this.mouseMiddle == ButtonStatu.Down || (this.touchs && this.touchs.length > 0);
     }
 
     //计算每帧的时间间隔
@@ -125,7 +127,9 @@ export default class InputMonitor extends cc.Component {
     private visibleSize : cc.Vec2;      //显示器的实际尺寸
     public DeltaTime():number{return this.deltaTime;}
     
-
+    public OnClickTest(){
+        console.log("sdfsf");
+    }
     
     makeDeltaStart(){
 
@@ -169,7 +173,7 @@ export default class InputMonitor extends cc.Component {
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN,this.keyBroadDown,this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP,this.keyBroadUp,this);
     }
-
+    
 
     //初始化屏幕参数    --启动时调用或者屏幕大小改变时调用
     initScreenInfo(){
@@ -255,6 +259,8 @@ export default class InputMonitor extends cc.Component {
             
             this.mouseWorldPosition.x = this.worldCamera.position.x - this.visibleSize.x + this.mousePosition.x;
             this.mouseWorldPosition.y = this.worldCamera.position.y - this.visibleSize.y + this.mousePosition.y;
+            // this.mouseWorldPosition.x = this.worldCamera.position.x + this.mousePosition.x;
+            // this.mouseWorldPosition.y = this.worldCamera.position.y + this.mousePosition.y;
             return this.mouseWorldPosition;
 
         }else{
@@ -267,9 +273,10 @@ export default class InputMonitor extends cc.Component {
         
         this.touchFingetMonitor(event);
         this.touchStatu[event.touch.getID()] = BtnStatu.Down;
-        this.mouseLeft = BtnStatu.Down;
-        this.mousePosition = event.touch.getLocation();
 
+        // this.mouseLeft = BtnStatu.Down;
+        
+        this.mousePosition = event.touch.getLocation();
 
         this.mouseDelta = cc.Vec2.ZERO;
     }
@@ -277,7 +284,7 @@ export default class InputMonitor extends cc.Component {
 
         this.touchFingetMonitor(event);
         this.touchStatu[event.touch.getID()] = BtnStatu.Move;
-        this.mouseLeft = BtnStatu.Move;
+        // this.mouseLeft = BtnStatu.Move;
         this.mouseDelta = event.getDelta();
 
         this.mousePosition = event.touch.getLocation();
@@ -286,7 +293,7 @@ export default class InputMonitor extends cc.Component {
 
         this.touchStatu[event.touch.getID()] = BtnStatu.Up;
         this.touchFingetOutMonitor(event);
-        this.mouseLeft = BtnStatu.Up;
+        // this.mouseLeft = BtnStatu.Up;
         this.mouseDelta = cc.Vec2.ZERO;
     }
     
@@ -294,14 +301,14 @@ export default class InputMonitor extends cc.Component {
 
         this.touchStatu[event.touch.getID()] = BtnStatu.Dis;
         this.touchFingetOutMonitor(event);
-        this.mouseLeft = BtnStatu.Up;
+        // this.mouseLeft = BtnStatu.Up;
         this.mouseDelta = cc.Vec2.ZERO;
     }
 
     private mouseBtnDownMonitor(event: cc.Event.EventMouse) {
 
         this.mousePosition = event.getLocation();
-
+        
         switch (event.getButton()) {
             case cc.Event.EventMouse.BUTTON_LEFT:
                 this.mouseLeft = BtnStatu.Down;

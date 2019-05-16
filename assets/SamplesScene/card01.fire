@@ -62,8 +62,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.2584490740740741,
-      "y": 0.2584490740740741,
+      "x": 0.5027635411045447,
+      "y": 0.5027635411045447,
       "z": 1
     },
     "_quat": {
@@ -732,7 +732,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "04217859-9e22-4a9d-8762-f4a7b5fce727"
+      "__uuid__": "e6561948-125b-44f6-8d98-99b3b4e00b6e"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -750,7 +750,7 @@
     "_id": "a5rAGvvu1EGon802nHeexr"
   },
   {
-    "__type__": "a1adf9EKhlH+5WPZy8Ywbj4",
+    "__type__": "fb0d7M72j1GXI3Orvg+UWYH",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -760,7 +760,7 @@
     "camera": {
       "__id__": 18
     },
-    "_id": "80MMezR4ZDlYpT3XvHh4rH"
+    "_id": "42UoMd0S5PTYtcxGNsxbk7"
   },
   {
     "__type__": "cc.Node",
@@ -931,7 +931,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Canvas",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 1
     },

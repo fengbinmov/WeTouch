@@ -1,126 +1,131 @@
 
-export class List<T>{
-    private item : T[];
-    private indexCount : number = 0;
-    constructor(){
+export class List<T> extends cc.ValueType{
 
+    private item: T[] = null;
+    private indexCount: number = 0;
+    constructor() {
+
+        super();
         this.item = [];
         this.indexCount = 0;
     }
-
-    public Count():number{return this.indexCount;}
+    
+    public get Count(): number { return this.indexCount; }
 
     //==
-    public Add(value : T){
+    public Add(value: T) {
         this.item[this.indexCount++] = value;
     }
     //==
-    public Remove(value : T){
+    public Remove(value: T) {
 
-        if(this.item == null || this.indexCount == 0 || !this.Contain(value)) return;
+        if (this.item == null || this.indexCount == 0 || !this.Contain(value)) return;
 
         let index = 0;
-        let temp : T[] = [];
 
-        for(index;index < this.indexCount;index++){
-            if(value == this.item[index])
+        for (index; index < this.indexCount; index++) {
+            if (value == this.item[index])
                 break;
-            else
-                temp[index] = this.item[index];
         }
-        for(index;index < this.item.length-1;index ++){
-            temp[index] = this.item[index+1];
+
+        this.RemoveItemUseIndex(index);
+    }
+
+    //==
+    public RemoveAt(_index: number) {
+
+        if (this.item == null || this.indexCount == 0 || _index < 0 || _index >= this.indexCount) return;
+
+        this.RemoveItemUseIndex(_index);
+    }
+
+    //==
+    private RemoveItemUseIndex(_index: number){
+
+        for (_index; _index < this.indexCount - 1; _index++) {
+            this.item[_index] = this.item[_index + 1];
         }
+        this.item[_index] = null;
         this.indexCount--;
-        this.item = temp;
+        this.item.length = this.indexCount
     }
 
     //==
-    public RemoveAt(_index:number){
-        
-        let index = 0;
-        let temp : T[] = [];
+    public Contain(value: T): boolean {
 
-        for(index;index < this.indexCount;index++){
-            if(_index == index)
-                break;
-            else
-                temp[index] = this.item[index];
-        }
-        for(index;index < this.item.length-1;index ++){
-            temp[index] = this.item[index+1];
-        }
-        if(index < this.item.length) {
-            this.indexCount--;
-            this.item = temp;
-        }
-    }
 
-    //==
-    public Contain(value : T):boolean{
-
-        
-        if(this.item == null || this.indexCount == 0) return false;
+        if (this.item == null || this.indexCount == 0) return false;
 
         let index = this.ItemIndexOf(value);
 
-        return index > -1 && index < this.indexCount;
+        return index > -1;
     }
 
     //==
-    public ItemIndexOf(value :T):number{
+    public ItemIndexOf(value: T): number {
 
         let index = 0;
 
-        for(index;index < this.indexCount;index++){
-            if(value == this.item[index])
+        for (index; index < this.indexCount; index++) {
+            
+            if (value.toString() == this.item[index].toString()){
                 break;
+            }
         }
-        if(index < this.indexCount)
+        if (index < this.indexCount)
             return index;
         else
             return -1;
     }
-
+    
     //==
-    public Item(index : number) : T{
+    public Item(index: number): T {
 
-        if(index >= 0 && index < this.indexCount)
+        if (index >= 0 && index < this.indexCount)
             return this.item[index];
-        else 
+        else
             return null;
     }
     //==
-    public SetItem(index : number, t :T) : boolean{
+    public SetItem(index: number, t: T): boolean {
 
-        if(index >= 0 && index < this.indexCount)
+        if (index >= 0 && index < this.indexCount)
             this.item[index] = t;
-        else 
+        else
             return false;
     }
     //==
-    public Clear(){
+    public Clear() {
         this.item = [];
+        this.item.length = 0;
         this.indexCount = 0;
+    }
+
+    //==
+    public ToArray() : T[]{
+        return this.item;
     }
 }
 
-export class Dictionary<K,V>{
+export class Dictionary<K, V>extends cc.ValueType{
 
-    private itemKey :List<K>;
-    private itemValue : List<V>;
-    private indexCount : number = 0;
-    constructor(){
+    private itemKey: List<K>;
+    private itemValue: List<V>;
+    private indexCount: number = 0;
+
+    constructor() {
+        super();
         this.itemKey = new List<K>();
         this.itemValue = new List<V>();
         this.indexCount = 0;
     }
-    public Count():number{return this.indexCount;}
+
+    public get Count(): number { return this.indexCount; }
 
     //==
-    public Add(k : K,v : V):Boolean{
+    public Add(k: K, v: V): Boolean {
 
-        if(!this.ContainKey(k)){
+        if (!this.ContainKey(k)) {
 
             this.itemKey.Add(k);
             this.itemValue.Add(v);
@@ -130,13 +135,13 @@ export class Dictionary<K,V>{
         return false;
     }
     //==
-    public Remove(k : K){
+    public Remove(k: K) {
 
-        if(this.itemKey == null || this.indexCount == 0 || !this.ContainKey(k)) return;
+        if (this.itemKey == null || this.indexCount == 0 || !this.ContainKey(k)) return;
 
         let index = this.itemKey.ItemIndexOf(k);
 
-        if(index > -1 && index < this.itemKey.Count()){
+        if (index > -1 && index < this.indexCount) {
 
             this.itemKey.RemoveAt(index);
             this.itemValue.RemoveAt(index);
@@ -144,120 +149,116 @@ export class Dictionary<K,V>{
         }
     }
     //==
-    public RemoveAt(_index : number){
+    public RemoveAt(_index: number) {
 
-        if(this.itemKey.Item(_index) != null){
+        if (this.itemKey == null || this.indexCount == 0 || _index >= this.indexCount || _index < 0 ) return;
 
-            this.itemKey.RemoveAt(_index);
-            this.itemValue.RemoveAt(_index);
-            this.indexCount--;
-        }
+        this.itemKey.RemoveAt(_index);
+        this.itemValue.RemoveAt(_index);
+        this.indexCount--;
     }
     //==
-    public ContainKey(k : K):boolean{
+    public ContainKey(k: K): boolean {
 
         return this.itemKey.Contain(k);
     }
     //==
-    public ContainValue(v : V):boolean{
+    public ContainValue(v: V): boolean {
 
         return this.itemValue.Contain(v);
     }
     //==
-    public Item(k:K):V{
+    public Item(k: K): V {
 
-        if(this.itemKey == null || this.itemKey.Count() == 0 || !this.ContainKey(k)) return;
+        if (this.itemKey == null || this.indexCount == 0 || !this.ContainKey(k)) return;
 
         let index = this.itemKey.ItemIndexOf(k);
 
-        if(index > -1 && index < this.itemKey.Count()){
+        if (index > -1 && index < this.indexCount) {
 
             return this.itemValue.Item(index);
-        }else{
+        } else {
             return null;
         }
     }
     //==
-    public SetItem(k:K,v :V):boolean{
+    public SetItem(k: K, v: V): boolean {
 
-        if(this.itemKey == null || this.itemKey.Count() == 0 || !this.ContainKey(k)) return;
+        if (this.itemKey == null || this.indexCount == 0 || !this.ContainKey(k)) return;
 
         let index = this.itemKey.ItemIndexOf(k);
 
-        if(index > -1 && index < this.itemKey.Count()){
+        if (index > -1 && index < this.indexCount) {
 
-            this.itemValue.SetItem(index,v);
+            this.itemValue.SetItem(index, v);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    //
-    // public ItemValueAt(index : number) : V{
-
-    //     return this.itemValue.Item(index);
-    // }
+    
     //==
-    public ItemKeyofIndex(index : number) : K{
+    public ItemKeyofIndex(index: number): K {
 
         return this.itemKey.Item(index);
     }
-    public Clear(){
+    
+    //==
+    public ItemValueofIndex(index: number): V {
+
+        return this.itemValue.Item(index);
+    }
+    public Clear() {
         this.itemKey.Clear();
         this.itemValue.Clear();
         this.indexCount = 0;
     }
 }
 
-export class Stack<T>{
+export class Stack<T>extends cc.ValueType{
 
-    private item : T[];
-    private indexCount : number = 0;
+    private item: T[];
+    private indexCount: number = 0;
 
-    constructor(){
+    constructor() {
+        super();
         this.item = [];
         this.indexCount = length;
     }
 
-    public Count():number{return this.indexCount;}
+    public get Count(): number { return this.indexCount; }
 
     //
-    public Push(value : T){
+    public Push(value: T) {
         this.item[this.indexCount++] = value;
     }
     //
-    public Pop() : T{
+    public Pop(): T {
 
-        if(this.item == null || this.indexCount == 0 ) return null;
+        if (this.item == null || this.indexCount == 0) return null;
 
-        let temp : T[] = [];
-        let tempI = this.item[this.item.length - 1];
+        let temp: T = this.Item[this.indexCount-1];
 
-        for(let index = 0;index < this.indexCount-1;index++){
-            
-            temp[index] = this.item[index];
-        }
-        
+        this.Item[this.indexCount-1] = null;
+
         this.indexCount--;
-        this.item = temp;
+        this.item.length = this.indexCount;
 
-        return tempI;
+        return temp;
     }
 
     //
-    public See() : T{
+    public See(): T {
 
-        if(this.item == null || this.indexCount == 0 ) return null;
+        if (this.item == null || this.indexCount == 0) return null;
 
-        let tempI = this.item[this.item.length - 1];
-        
-        return tempI;
+        return this.item[this.item.length - 1];
     }
 
     //==
-    public Contain(value : T):boolean{
+    public Contain(value: T): boolean {
 
-        if(this.item == null || this.indexCount == 0) return false;
+        if (this.item == null || this.indexCount == 0) return false;
 
         let index = this.ItemIndexOf(value);
 
@@ -265,85 +266,85 @@ export class Stack<T>{
     }
 
     //==
-    private ItemIndexOf(value :T):number{
+    private ItemIndexOf(value: T): number {
 
         let index = 0;
 
-        for(index;index < this.indexCount;index++){
-            if(value == this.item[index])
+        for (index; index < this.indexCount; index++) {
+            if (value.toString() == this.item[index].toString())
                 break;
         }
-        if(index < this.indexCount)
+        if (index < this.indexCount)
             return index;
         else
             return -1;
     }
-    
-    public Item(index :number):T{
 
-        if(index >= 0 && index < this.indexCount)
+    public Item(index: number): T {
+
+        if (index >= 0 && index < this.indexCount)
             return this.item[index];
-        else 
+        else
             return null;
     }
 
     //==
-    public Clear(){
+    public Clear() {
         this.item = [];
+        this.item.length = 0;
         this.indexCount = 0;
     }
 }
 
-export class Queue<T>{
+export class Queue<T>extends cc.ValueType{
 
-    private item : T[];
-    private indexCount : number = 0;
+    private item: T[];
+    private indexCount: number = 0;
 
-    constructor(){
+    constructor() {
+        super();
         this.item = [];
         this.indexCount = length;
     }
 
-    public Count():number{return this.indexCount;}
+    public get Count(): number { return this.indexCount; }
 
     //
-    public Push(value : T){
+    public Push(value: T) {
         this.item[this.indexCount++] = value;
     }
 
     //
-    public Pop() : T{
+    public Pop(): T {
 
-        if(this.item == null || this.indexCount == 0 ) return null;
+        if (this.item == null || this.indexCount == 0) return null;
 
-        let temp : T[] = [];
         let tempI = this.item[0];
+        let index = 1;
+        for (; index < this.indexCount; index++) {
 
-        for(let index = 1;index < this.indexCount;index++){
-            
-            temp[index-1] = this.item[index];
+            this.item[index - 1] = this.item[index];
         }
-        
+
+        this.item[this.indexCount - 1] = null;
         this.indexCount--;
-        this.item = temp;
+        this.item.length = this.indexCount;
 
         return tempI;
     }
 
     //
-    public See() : T{
+    public See(): T {
 
-        if(this.item == null || this.indexCount == 0 ) return null;
+        if (this.item == null || this.indexCount == 0) return null;
 
-        let tempI = this.item[this.item.length - 1];
-        
-        return tempI;
+        return this.item[0];
     }
 
     //==
-    public Contain(value : T):boolean{
+    public Contain(value: T): boolean {
 
-        if(this.item == null || this.indexCount == 0) return false;
+        if (this.item == null || this.indexCount == 0) return false;
 
         let index = this.ItemIndexOf(value);
 
@@ -351,31 +352,32 @@ export class Queue<T>{
     }
 
     //==
-    private ItemIndexOf(value :T):number{
+    private ItemIndexOf(value: T): number {
 
         let index = 0;
 
-        for(index;index < this.indexCount;index++){
-            if(value == this.item[index])
+        for (index; index < this.indexCount; index++) {
+            if (value.toString() == this.item[index].toString())
                 break;
         }
-        if(index < this.indexCount)
+        if (index < this.indexCount)
             return index;
         else
             return -1;
     }
-    
-    public Item(index :number):T{
 
-        if(index >= 0 && index < this.indexCount)
+    public Item(index: number): T {
+
+        if (index >= 0 && index < this.indexCount)
             return this.item[index];
-        else 
+        else
             return null;
     }
 
     //==
-    public Clear(){
+    public Clear() {
         this.item = [];
+        this.item.length = 0;
         this.indexCount = 0;
     }
 }
