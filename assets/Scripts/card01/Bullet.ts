@@ -31,6 +31,6 @@ export default class Bullet extends cc.Component {
     }
     update(){
 
-        this.node.position = new cc.Vec2(this.node.position.x + this.dir.x * InputMonitor.Instance().DeltaTime(),this.node.position.y + this.dir.y * InputMonitor.Instance().DeltaTime());
+        this.node.position = new cc.Vec2(this.node.position.x + this.dir.x * InputMonitor.Instance.DeltaTime(),this.node.position.y + this.dir.y * InputMonitor.Instance.DeltaTime());
     }
 }

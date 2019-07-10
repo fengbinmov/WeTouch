@@ -31,40 +31,40 @@ export default class AimationPlayer extends cc.Component {
     }
     update(){
 
-        if(InputMonitor.Instance().GetKeyBeginDown(cc.macro.KEY.a)){
+        if(InputMonitor.Instance.GetKeyBeginDown(cc.macro.KEY.a)){
 
             if(this.node.width > 0)
                 this.node.width = -this.node.width;
             this.anim.play("run",0);
 
-            if(this.ss.Count() > 10)
+            if(this.ss.Count > 10)
                 this.ss.Pop();
             this.ss.Push("A 触发");
         }
-        if(InputMonitor.Instance().GetKeyBeginDown(cc.macro.KEY.d)){
+        if(InputMonitor.Instance.GetKeyBeginDown(cc.macro.KEY.d)){
 
             if(this.node.width < 0)
                 this.node.width = -this.node.width;
             this.anim.play("run",0);
 
-            if(this.ss.Count() > 10)
+            if(this.ss.Count > 10)
                 this.ss.Pop();
             this.ss.Push("D 触发");
         }
-        if(InputMonitor.Instance().GetKeyBeginDown(cc.macro.KEY.w)){
+        if(InputMonitor.Instance.GetKeyBeginDown(cc.macro.KEY.w)){
 
             this.anim.play("jump",0);
             
-            if(this.ss.Count() > 10)
+            if(this.ss.Count > 10)
                 this.ss.Pop();
             this.ss.Push("W 触发");
         }
-        if(InputMonitor.Instance().GetKeyBeginDown(cc.macro.KEY.s)){
+        if(InputMonitor.Instance.GetKeyBeginDown(cc.macro.KEY.s)){
 
             this.anim.play("dying",0);
 
             
-            if(this.ss.Count() > 10)
+            if(this.ss.Count > 10)
                 this.ss.Pop();
             this.ss.Push("S 触发");
         }
@@ -72,7 +72,7 @@ export default class AimationPlayer extends cc.Component {
 
 
         let mess = "";
-        for(let i=0;i<this.ss.Count();i++){
+        for(let i=0;i<this.ss.Count;i++){
             mess += this.ss.Item(i)+"\n";
         }
         this.label.string = mess;

@@ -31,7 +31,7 @@ export default class WeaponSystem extends cc.Component {
     }
     update(){
 
-        this.nowTime += this.nowTime + InputMonitor.Instance().DeltaTime();
+        this.nowTime += this.nowTime + InputMonitor.Instance.DeltaTime();
         if(this.nowTime >= this.attackRate){
             this.nowTime = 0;
             

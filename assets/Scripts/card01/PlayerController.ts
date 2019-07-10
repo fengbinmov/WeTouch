@@ -31,14 +31,13 @@ export default class PlayerController extends cc.Component {
 
     update() {
 
-        let target = InputMonitor.Instance().MouseToWorldPosition();
+        let target = InputMonitor.Instance.MouseToWorldPosition();
 
-
-        if(InputMonitor.Instance().MouseBtnLeft() == ButtonStatu.Down || InputMonitor.Instance().MouseBtnLeft() == ButtonStatu.Move){
+        if(InputMonitor.Instance.MouseBtnLeft() == ButtonStatu.Down || InputMonitor.Instance.MouseBtnLeft() == ButtonStatu.Move){
             if (this.dis(this.node.position,target) > 150) {
 
                 this.nowDir = target.sub(this.node.position).normalize().mul(this.speed);
-        
+
                 this.node.position = this.node.position.add( this.nowDir);
                 this.camera.position = this.camera.position.add( this.nowDir);
             }
@@ -51,22 +50,20 @@ export default class PlayerController extends cc.Component {
                 this.node.rotation = ang;
             }
         }
-        if(InputMonitor.Instance().MouseBtnLeft() == ButtonStatu.Up){
+        if(InputMonitor.Instance.MouseBtnLeft() == ButtonStatu.Up){
             this.nowDir = cc.Vec2.ZERO;
         }
 
-        
-        
-        InputMonitor.Instance().lable.string = 
-        "ScreenPosition: "+InputMonitor.Instance().MousePosition() +"\n"+
+        InputMonitor.Instance.lable.string = 
+        "ScreenPosition: "+InputMonitor.Instance.MousePosition() +"\n"+
         "worldPosition: "+target +"\n"+
         "selfPosition: "+this.node.position+"\n"+
         "worldCamera: "+this.camera.position+"\n"+
         "dis: "+this.dis(target,this.node.position)+"\n"+
         "dir: "+this.nowDir+"\n"+
-        "MouseBtnLeft: "+InputMonitor.Instance().MouseBtnLeft()+"\n"+
-        "delta: "+InputMonitor.Instance().DeltaTime();
-
+        "MouseBtnLeft: "+InputMonitor.Instance.MouseBtnLeft()+"\n"+
+        "delta: "+InputMonitor.Instance.DeltaTime()+"\n"+
+        "InputOver: "+InputMonitor.Instance.IsInputOverObjectinWorld;
     }
 
     dis(a : cc.Vec2,b :cc.Vec2):number{

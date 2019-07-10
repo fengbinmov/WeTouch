@@ -30,20 +30,20 @@ export default class MuitTouchTest extends cc.Component {
         
         let ss =  "";
         let nav = "";
-        if(InputMonitor.Instance().Touchs() != null){
+        if(InputMonitor.Instance.Touchs() != null){
 
-            nav += InputMonitor.Instance().Touchs().length + "\n";
+            nav += InputMonitor.Instance.Touchs().length + "\n";
             let step = 0;
             
-            for(let i=0;i<InputMonitor.Instance().Touchs().length;i++){
+            for(let i=0;i<InputMonitor.Instance.Touchs().length;i++){
 
-                for(let j=i + step;j<InputMonitor.Instance().Touchs()[i].getID();j++){
+                for(let j=i + step;j<InputMonitor.Instance.Touchs()[i].getID();j++){
                     nav += "I ";
                     ss += "\n";
                     step++;
                 }
-                let id = InputMonitor.Instance().Touchs()[i].getID();
-                ss += id+" "+InputMonitor.Instance().TouchStatu()[id]+ " "+InputMonitor.Instance().Touchs()[i].getLocation() + "\n";
+                let id = InputMonitor.Instance.Touchs()[i].getID();
+                ss += id+" "+InputMonitor.Instance.TouchStatu()[id]+ " "+InputMonitor.Instance.Touchs()[i].getLocation() + "\n";
                 nav += id+" ";
                 
                 
@@ -51,26 +51,26 @@ export default class MuitTouchTest extends cc.Component {
                     
                     let obj:cc.Node = cc.instantiate(this.fingerPrefab);
                     obj.parent = cc.director.getScene();
-                    obj.position = InputMonitor.Instance().Touchs()[i].getLocation();
+                    obj.position = InputMonitor.Instance.Touchs()[i].getLocation();
                     obj.getComponentInChildren(cc.Label).string = id.toString();
                     this.finger.Add(id,obj);
                 }
                 else{
-                    this.finger.Item(id).position = InputMonitor.Instance().Touchs()[i].getLocation();
+                    this.finger.Item(id).position = InputMonitor.Instance.Touchs()[i].getLocation();
                 }
             }
         }
         
         let del : General.List<number> = new General.List<number>();
 
-        for(let j=0;j<this.finger.Count();j++){
+        for(let j=0;j<this.finger.Count;j++){
 
             let id : number = this.finger.ItemKeyofIndex(j);
-            if(!InputMonitor.Instance().ContainID(id)){
+            if(!InputMonitor.Instance.ContainID(id)){
                 del.Add(id);
             }
         }
-        for(let j =0;j<del.Count();j++){
+        for(let j =0;j<del.Count;j++){
 
             this.finger.Item(del.Item(j)).destroy();
             this.finger.Remove(del.Item(j));
