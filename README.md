@@ -19,7 +19,7 @@ CocosCreate 触控辅助插件
 
 3.实时访问键盘按钮状态
 
-4.增加基础数据结构 List Dictionary Statck Queue
+4.基础数据结构 List Dictionary Statck Queue
 
 **范例展示**
 
@@ -28,6 +28,8 @@ CocosCreate 触控辅助插件
   card01 :展示了鼠标位置与世界的转换  
   
   card02 :展示了实时访问键盘按钮状态
+
+  card03 :展示了General.ts中的数据容器的使用
   
 **API**
   
